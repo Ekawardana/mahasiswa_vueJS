@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <h1>Mahasiswa</h1>
+      <mahasiswa-table v-bind:data="datamahasiswa" />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MahasiswaTable from "@/components/MahasiswaTable.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    MahasiswaTable,
+  },
+  data() {
+    return {
+      datamahasiswa: [
+        {
+          id: 1,
+          nama: "Eka Wardana",
+          nim: "11183102",
+          email: "eka@gmail.com",
+        },
+        {
+          id: 2,
+          nama: "Shenny Risky",
+          nim: "11192810",
+          email: "shenny@gmail.com",
+        },
+      ],
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
 </style>
