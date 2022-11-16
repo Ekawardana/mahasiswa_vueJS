@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <h1>Mahasiswa</h1>
+      <h1>Data Mahasiswa</h1>
       <mahasiswa-form @add:mahasiswa="addMahasiswa" />
       <mahasiswa-table v-bind:data="datamahasiswa" />
     </div>
