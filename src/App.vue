@@ -2,6 +2,7 @@
   <div id="app">
     <div class="container">
       <h1>Mahasiswa</h1>
+      <mahasiswa-form @add:mahasiswa="addMahasiswa" />
       <mahasiswa-table v-bind:data="datamahasiswa" />
     </div>
   </div>
@@ -9,11 +10,13 @@
 
 <script>
 import MahasiswaTable from "@/components/MahasiswaTable.vue";
+import MahasiswaForm from "@/components/MahasiswaForm.vue";
 
 export default {
   name: "App",
   components: {
     MahasiswaTable,
+    MahasiswaForm,
   },
   data() {
     return {
@@ -32,6 +35,26 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    addMahasiswa(mahasiswa) {
+      /** Kondisi, jika data yang diterima > 0(True)
+       * maka tampil [this.datamahasiswa.length - 1]
+       * jika tidak maka data 0(Kosongin aja).
+       * **/
+      const lastId =
+        this.datamahasiswa.length > 0
+          ? this.datamahasiswa[this.datamahasiswa.length - 1].id
+          : 0;
+      // id terakhir yang ada di array tambah 1 buat dapetin id baru
+      const id = lastId + 1;
+
+      const newMahasiswa = { ...mahasiswa, id };
+
+      // Panggil data yg ditampung divariable newMahasiswa
+      this.datamahasiswa = [...this.datamahasiswa, newMahasiswa];
+    },
   },
 };
 </script>
