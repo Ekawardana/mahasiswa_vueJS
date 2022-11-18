@@ -3,7 +3,10 @@
     <div class="container">
       <h1>Data Mahasiswa</h1>
       <mahasiswa-form @add:mahasiswa="addMahasiswa" />
-      <mahasiswa-table v-bind:data="datamahasiswa" />
+      <mahasiswa-table
+        v-bind:data="datamahasiswa"
+        @delete:mahasiswa="deleteMahasiswa"
+      />
     </div>
   </div>
 </template>
@@ -54,6 +57,17 @@ export default {
 
       // Panggil data yg ditampung divariable newMahasiswa
       this.datamahasiswa = [...this.datamahasiswa, newMahasiswa];
+    },
+
+    deleteMahasiswa(id) {
+      // Modal
+      var resconfirm = confirm("Apakah Anda Yakin?");
+      if (resconfirm) {
+        // Aksi Delete Mahasiswa
+        this.datamahasiswa = this.datamahasiswa.filter(
+          (mahasiswa) => mahasiswa.id !== id
+        );
+      }
     },
   },
 };

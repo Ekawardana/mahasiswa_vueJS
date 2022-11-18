@@ -6,6 +6,7 @@
           <th>Nama</th>
           <th>Nim</th>
           <th>Email</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -13,6 +14,12 @@
           <td>{{ mahasiswa.nama }}</td>
           <td>{{ mahasiswa.nim }}</td>
           <td>{{ mahasiswa.email }}</td>
+          <td>
+            <button>Edit</button>
+            <button @click="$emit('delete:mahasiswa', mahasiswa.id)">
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -26,5 +33,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+button {
+  margin: 3px;
+}
 </style>
